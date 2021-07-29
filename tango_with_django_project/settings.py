@@ -128,3 +128,4 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 LOGIN_URL = 'rango:login'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
