@@ -31,7 +31,9 @@ def about(request):
     # return HttpResponse("Rango says here is the about page.<br/>"
     #                     "<a href='/rango/'>Index</a>")
 
-    return render(request, 'rango/about.html')
+    print(request.method)
+    print(request.user)
+    return render(request, 'rango/about.html', {})
 
 
 def show_category(request, category_name_slug):
@@ -80,8 +82,13 @@ def add_page(request, category_name_slug):
                 page.views = 0
                 page.save()
                 return redirect(reverse('rango:show_category',
-                                                    kwargs={'category_name_slug': category_name_slug}))
+                                        kwargs={'category_name_slug': category_name_slug}))
         else:
             print(form.errors)
     context_dict = {'form': form, 'category': category}
     return render(request, 'rango/add_page.html', context=context_dict)
+
+
+def get_category_list(current_category=None):
+    return {'categories': Category.objects.all(),
+            'current_category': current_category}
