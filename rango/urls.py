@@ -19,10 +19,12 @@ from django.conf.urls import url
 from rango import views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import include
 
 urlpatterns = [
                   path('', views.index, name='index'),
-                  path('rango/', include('rango.urls')),
-                  path('admin/', admin.site.urls),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('about/', views.about, name='about'),
+                  path('category/<slug:category_name_slug>/', views.show_category, name=' show_category'),
+                  # url(r'rango/about/', views.about),
+                  # url(r'rango/', views.index, name='index'),
+                  # url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.show_category, name='show_category')
+              ]
