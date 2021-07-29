@@ -20,11 +20,11 @@ from rango import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name = 'rango'
+
 urlpatterns = [
                   path('', views.index, name='index'),
                   path('about/', views.about, name='about'),
-                  path('category/<slug:category_name_slug>/', views.show_category, name=' show_category'),
-                  # url(r'rango/about/', views.about),
-                  # url(r'rango/', views.index, name='index'),
-                  # url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.show_category, name='show_category')
+                  path('category/<slug:category_name_slug>/', views.show_category, name='show_category'),
               ]
+
